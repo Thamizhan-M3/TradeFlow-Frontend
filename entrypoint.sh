@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Injecting runtime env variables..."
+echo "Injecting runtime env variables...."
 
 envsubst < /usr/share/nginx/html/env.template.js \
   > /usr/share/nginx/html/env.js
