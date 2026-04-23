@@ -13,6 +13,9 @@ on:
       - dev
       - qa
       - master
+      
+permissions:
+  contents: write
 
 jobs:
   frontend-ci:
