@@ -72,16 +72,7 @@ function createClient(baseURL) {
 }
 
 // Create service-specific clients
-export const usersApi = createClient(import.meta.env.VITE_USERS_API);
-export const stocksApi = createClient(import.meta.env.VITE_STOCKS_API);
-export const tradesApi = createClient(import.meta.env.VITE_TRADES_API);
-export const portfolioApi = createClient(import.meta.env.VITE_PORTFOLIO_API);
-
-// const getEnv = (key) => {
-//   return window.__ENV__?.[key];
-// };
-
-// export const usersApi = createClient(getEnv("VITE_USERS_API"));
-// export const stocksApi = createClient(getEnv("VITE_STOCKS_API"));
-// export const tradesApi = createClient(getEnv("VITE_TRADES_API"));
-// export const portfolioApi = createClient(getEnv("VITE_PORTFOLIO_API"));
+export const usersApi = createClient(window.__ENV__?.VITE_USERS_API ?? import.meta.env.VITE_USERS_API);
+export const stocksApi = createClient(window.__ENV__?.VITE_STOCKS_API ?? import.meta.env.VITE_STOCKS_API);
+export const tradesApi = createClient(window.__ENV__?.VITE_TRADES_API ?? import.meta.env.VITE_TRADES_API);
+export const portfolioApi = createClient(window.__ENV__?.VITE_PORTFOLIO_API ?? import.meta.env.VITE_PORTFOLIO_API);
