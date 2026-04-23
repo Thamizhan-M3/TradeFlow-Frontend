@@ -1,0 +1,57 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - dev
+      - qa
+      - master
+
+  pull_request:
+    branches:
+      - dev
+      - qa
+      - master
+
+jobs:
+  frontend-ci:
+    name: Frontend Pipeline
+
+    # 🔗 Reusable CI Template
+    uses: Thamizhan-M3/TradeFlow-CommonTemplate/.github/workflows/_ci_template.yaml@master
+
+    with:
+      # 📁 Root of frontend project (Vite/React)
+      working_directory: .
+
+      # 🐳 Logical image name (used in Dockerfile resolution if needed)
+      image_name: tradeflow-frontend
+
+      # 🧾 Final Docker image name
+      service_name: tradeflow-frontend
+
+      # ⚛️ Frontend needs build step
+      run_build: true
+
+      # 🔍 SonarQube project key
+      sonar_project_key: tradeflow-frontend
+
+      # 🐳 Docker context (root)
+      docker_context: .
+
+      # 📄 Explicit Dockerfile path
+      dockerfile_path: ./Dockerfile
+
+    # 🔐 Pass all required secrets to template
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      # SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      # SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      # SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      # SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      # EMAIL_TO: ${{ secrets.EMAIL_TO }}
