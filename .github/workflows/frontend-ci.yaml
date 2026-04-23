@@ -26,7 +26,7 @@ jobs:
       working_directory: .
 
       # 🐳 Logical image name (used in Dockerfile resolution if needed)
-      image_name: frontend
+      image_name: tradeflow-frontend
 
       # 🧾 Final Docker image name
       service_name: tradeflow-frontend
