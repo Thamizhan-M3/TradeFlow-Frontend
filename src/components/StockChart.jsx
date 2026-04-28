@@ -10,9 +10,11 @@ import {
 
 function formatChartData(history) {
   return history.map((item) => ({
-    time: new Date(item.timestamp).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit"
+    time: new Date(item.timestamp).toLocaleString([], {
+      day: "2-digit",
+      // month: "short",
+      // hour: "2-digit",
+      // minute: "2-digit"
     }),
     price: Number(item.price)
   }));
